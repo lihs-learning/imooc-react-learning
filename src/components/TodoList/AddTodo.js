@@ -1,7 +1,4 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from "react-redux";
-
-import {getAddTodoAction} from "../../store/actions/creators";
+import React, {Component} from 'react'
 
 class AddTodo extends Component {
 
@@ -26,7 +23,7 @@ class AddTodo extends Component {
     if (!todoContent.trim()) {
       return
     }
-    this.props.dispatch(getAddTodoAction(todoContent))
+    this.props.addTodo(todoContent)
     this.setState(() => ({
       todoContent: ''
     }))
@@ -34,17 +31,17 @@ class AddTodo extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div>
         <input
           onInput={this.handleContentInput}
           value={this.state.todoContent}
           type="text"
         />
         <button onClick={this.handleAddClick}>Add</button>
-      </Fragment>
+      </div>
     )
   }
 
 }
 
-export default connect()(AddTodo)
+export default AddTodo

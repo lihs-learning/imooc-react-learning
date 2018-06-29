@@ -5,11 +5,6 @@ import Todo from './Todo'
 
 class List extends Component {
 
-  constructor(props) {
-    super(props)
-    this.todosRender = this.todosRender.bind(this)
-  }
-
   todosRender() {
     return this.props.todos.map((todo) =>
       <Todo

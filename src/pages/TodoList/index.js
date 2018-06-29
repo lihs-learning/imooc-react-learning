@@ -1,17 +1,13 @@
 import React, {Component, Fragment} from 'react'
 
-import AddTodo from '../../containers/TodoList/AddTodo'
-import VisibleTodoList from '../../containers/TodoList/VisibleTodoList'
-import Footer from '../../components/TodoList/Footer'
+import Todos from '../../containers/TodoList'
 
 class TodoList extends Component {
 
   render() {
     return (
       <Fragment>
-        <AddTodo/>
-        <VisibleTodoList/>
-        <Footer/>
+        <Todos/>
       </Fragment>
     )
   }
