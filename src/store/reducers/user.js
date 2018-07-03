@@ -15,20 +15,20 @@ const user = (state = defaultState, action) => {
     case GET_USER: {
       return {
         ...state,
-        isPending: action.isPending
+        isPending: true
       }
     }
     case GET_USER_SUCCESS: {
       return {
         ...state,
-        isPending: action.isPending,
+        isPending: false,
         info: action.info
       }
     }
     case GET_USER_FAILED: {
       return {
         ...state,
-        isPending: action.isPending,
+        isPending: false,
         msg: action.msg
       }
     }

@@ -6,8 +6,6 @@ import {
 
 const defaultState = {
   isPending: null,
-  userName: '',
-  repoName: '',
   stargazersList: []
 }
 
@@ -16,22 +14,20 @@ const repoStargazers = (state = defaultState, action) => {
     case GET_REPO_STARGAZERS: {
       return {
         ...state,
-        isPending: action.isPending,
-        userName: action.userName,
-        repoName: action.repoName
+        isPending: true
       }
     }
     case GET_REPO_STARGAZERS_SUCCESS: {
       return {
         ...state,
-        isPending: action.isPending,
-        stargazersList: action.stargazersList
+        isPending: false,
+        list: action.list
       }
     }
     case GET_REPO_STARGAZERS_FAILED: {
       return {
         ...state,
-        isPending: action.isPending,
+        isPending: false,
         msg: action.msg
       }
     }

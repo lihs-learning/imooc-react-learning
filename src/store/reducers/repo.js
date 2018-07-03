@@ -5,10 +5,9 @@ import {
 } from '../actions/types';
 
 const defaultState = {
-  isPending: null,
-  userName: '',
-  repoName: '',
-  repo: {}
+  isPending: true,
+  info: {},
+  msg: ''
 }
 
 const repo = (state = defaultState, action) => {
@@ -16,22 +15,20 @@ const repo = (state = defaultState, action) => {
     case GET_REPO: {
       return {
         ...state,
-        isPending: action.isPending,
-        userName: action.userName,
-        repoName: action.repoName
+        isPending: true,
       }
     }
     case GET_REPO_SUCCESS: {
       return {
         ...state,
-        isPending: action.isPending,
-        repo: action.repo
+        isPending: false,
+        info: action.info
       }
     }
     case GET_REPO_FAILED: {
       return {
         ...state,
-        isPending: action.isPending,
+        isPending: false,
         msg: action.msg
       }
     }

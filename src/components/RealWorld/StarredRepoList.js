@@ -10,9 +10,7 @@ class StarredRepoList extends Component {
         {this.props.starredRepoList.map(repo => (
           <li key={repo.id}>
             <RepoInfo
-              name={repo.name}
-              starNumber={repo.stargazers_count}
-              desc={repo.description}
+              repo={repo}
               detail={false}
             />
           </li>

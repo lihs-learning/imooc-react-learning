@@ -15,20 +15,20 @@ const userStarredRepos = (state = defaultState, action) => {
     case GET_USER_STARRED_REPO: {
       return {
         ...state,
-        isPending: action.isPending
+        isPending: true
       }
     }
     case GET_USER_STARRED_REPO_SUCCESS: {
       return {
         ...state,
-        isPending: action.isPending,
+        isPending: false,
         list: action.list
       }
     }
     case GET_USER_STARRED_REPO_FAILED: {
       return {
         ...state,
-        isPending: action.isPending,
+        isPending: false,
         msg: action.msg
       }
     }
