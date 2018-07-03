@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
-import {user as userHttpServices} from '../../services/HttpService'
+import {users as userHttpServices} from '../../services/HttpService'
 
 import UserInfo from '../../components/RealWorld/UserInfo'
 import StarredRepoList from '../../components/RealWorld/StarredRepoList'
@@ -83,7 +83,7 @@ const mapStateToProps = (state) => ({
   userInfoErrMsg: state.user.msg,
   starredRepoList: state.userStarredRepos.list,
   starredRepoListIsPending: state.userStarredRepos.isPending,
-  StarredRepoListErrMsg: state.userStarredRepos.msg
+  starredRepoListErrMsg: state.userStarredRepos.msg
 })
 
 const mapDispatchToProps = (dispatch) => ({

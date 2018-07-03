@@ -14,7 +14,7 @@ function httpRequest({method = 'get', url, data, needToken = false}) {
   })
 }
 
-const user = (function () {
+const users = (function () {
   const url = root + '/users'
   return {
     reqUser: function (userName) {
@@ -27,7 +27,7 @@ const user = (function () {
     },
     reqUserStarred: function (userName) {
       if (!userName) {
-        throw Error('API: user.reqUserStarred require userName')
+        throw Error('API: users.reqUserStarred require userName')
       }
       return httpRequest({
         url: url + '/' + userName + '/starred'
@@ -36,4 +36,26 @@ const user = (function () {
   }
 })()
 
-export {user}
+const repos = (function () {
+  const url = root + '/repos'
+  return {
+    reqRepo: function (repoFullName) {
+      if (!repoFullName) {
+        throw Error(`API: repo.reqRepo require repoFullName, but get ${repoFullName}`)
+      }
+      return httpRequest({
+        url: `${url}/${repoFullName}`
+      })
+    },
+    reqRepoStargazers: function (repoFullName) {
+      if (!repoFullName) {
+        throw Error(`API: repo.reqRepoStargazers require repoFullName, but get ${repoFullName}`)
+      }
+      return httpRequest({
+        url: `${url}/${repoFullName}/stargazers`
+      })
+    }
+  }
+})()
+
+export {users, repos}

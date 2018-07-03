@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class UserInfo extends Component {
 
@@ -10,7 +11,7 @@ class UserInfo extends Component {
     const {isPending, userName} = this.props
     if (isPending) {
       return (
-        <p>正在搜索 {userName} 请稍后</p>
+        <p>正在搜索 {userName} 的信息</p>
       )
     }
     const {errMsg} = this.props
@@ -19,11 +20,13 @@ class UserInfo extends Component {
         <p>{errMsg}</p>
       )
     }
-    const {avatar_url, html_url, login, name} = this.props.userInfo
+    const {avatar_url, login, name} = this.props.userInfo
     return (
       <div>
         <img src={avatar_url} alt="user avatar" width="200px"/>
-        <h2><a href={html_url}>{login}({name})</a></h2>
+        <h2>
+          <Link to={`/RealWorld/${login}`}>{login}{name && `(${name})`}</Link>
+        </h2>
       </div>
     )
   }
