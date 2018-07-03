@@ -1,13 +1,27 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import {Provider} from 'react-redux'
+import {Route, Link} from 'react-router-dom'
 
-class App extends Component {
+import RealWorld from './containers/RealWorld'
+
+class Root extends Component {
   render() {
     return (
-      <div>
-        <h1>RealWorld</h1>
-      </div>
-    );
+      <Provider store={this.props.store}>
+        <div>
+          <Route path="/" exact
+                 component={() => (<Link to="/RealWorld">RealWorld</Link>)}/>
+          <Route path="/RealWorld"
+                 component={RealWorld}/>
+        </div>
+      </Provider>
+    )
   }
 }
 
-export default App;
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+}
+
+export default Root

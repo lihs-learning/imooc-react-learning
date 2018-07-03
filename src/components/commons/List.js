@@ -26,7 +26,7 @@ class List extends Component{
       <ul>
         {items.map((item) => {
           return (
-            <li>{renderItem(item)}</li>
+            <li key={item.id}>{renderItem(item)}</li>
           )
         })}
       </ul>
@@ -35,3 +35,4 @@ class List extends Component{
 
 }
 
+export default List

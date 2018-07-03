@@ -5,26 +5,24 @@ import {
 } from '../actions/types';
 
 const defaultState = {
-  isPending: null,
-  userName: '',
-  userStarredRepoList: [],
+  isPending: true,
+  list: [],
   msg: ''
 }
 
-const userStarredRepo = (state = defaultState, action) => {
+const userStarredRepos = (state = defaultState, action) => {
   switch (action.type) {
     case GET_USER_STARRED_REPO: {
       return {
         ...state,
-        isPending: action.isPending,
-        userName: action.userName
+        isPending: action.isPending
       }
     }
     case GET_USER_STARRED_REPO_SUCCESS: {
       return {
         ...state,
         isPending: action.isPending,
-        user: action.user
+        list: action.list
       }
     }
     case GET_USER_STARRED_REPO_FAILED: {
@@ -34,7 +32,10 @@ const userStarredRepo = (state = defaultState, action) => {
         msg: action.msg
       }
     }
+    default: {
+      return state
+    }
   }
 }
 
-export default userStarredRepo
+export default userStarredRepos

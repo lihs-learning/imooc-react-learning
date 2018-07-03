@@ -1,12 +1,12 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {Provider} from 'react-redux'
-import App from './App'
+import {HashRouter as Router} from 'react-router-dom'
+import Root from './Root'
 import store from './store'
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Root store={store}/>
+  </Router>,
   document.getElementById('root')
 );

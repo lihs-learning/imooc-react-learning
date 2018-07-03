@@ -1,19 +1,25 @@
 import React, {Component} from 'react'
 
-class UserProfile extends Component{
+class UserInfo extends Component {
+
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.userInfo.id !== this.props.userInfo.id
+  // }
 
   render() {
-    if (!this.props.username) {
-      return null
-    }
-    if (!this.props.user) {
+    const {isPending, userName} = this.props
+    if (isPending) {
       return (
-        <div>
-          <p>正在搜索 {this.props.username} 请稍后</p>
-        </div>
+        <p>正在搜索 {userName} 请稍后</p>
       )
     }
-    const {avatar_url, html_url, login, name} = this.props.user
+    const {errMsg} = this.props
+    if (errMsg) {
+      return (
+        <p>{errMsg}</p>
+      )
+    }
+    const {avatar_url, html_url, login, name} = this.props.userInfo
     return (
       <div>
         <img src={avatar_url} alt="user avatar" width="200px"/>
@@ -24,4 +30,4 @@ class UserProfile extends Component{
 
 }
 
-export default UserProfile
+export default UserInfo
